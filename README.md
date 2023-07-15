@@ -1,6 +1,6 @@
 # NgYoutech
 
-This project was generated with [Java] version 11, [Spring] version 2.7.5 y [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+This project was generated with Java version 11, Spring version 2.7.5 y Angular CLI version 14.2.8.
 
 ## Development server
 
