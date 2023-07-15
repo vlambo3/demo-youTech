@@ -1,0 +1,57 @@
+<h1>Realiza tu búsqueda</h1>
+<div class="container">
+	<section class="filters">
+		<mat-form-field appearance="outline">
+			<mat-label>Ingresa el nombre de algun creador de contenido</mat-label>
+			<input matInput placeholder="Placeholder" [formControl]="searCtrl" />
+			<mat-icon matPrefix>search</mat-icon>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline" *ngIf="allTags">
+			<!-- <mat-label>Favorite Fruits</mat-label> -->
+			<mat-chip-list #chipList>
+				<mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+					{{ tag.description }}
+					<button matChipRemove>
+						<mat-icon>cancel</mat-icon>
+					</button>
+				</mat-chip>
+
+				<input
+					placeholder="nueva palabra..."
+					#tagInput
+					[formControl]="tagsCtrl"
+					[matAutocomplete]="auto"
+					[matChipInputFor]="chipList"
+					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+					[matChipInputAddOnBlur]="false"
+				/>
+			</mat-chip-list>
+			<mat-hint>Debe seleccionar al menos una palabra</mat-hint>
+			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+				<mat-option *ngFor="let tag of filteredTags | async" [value]="tag.description">
+					{{ tag.description }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-form-field>
+	</section>
+
+	<section class="actions">
+		<button mat-flat-button color="primary" type="button" (click)="clickBuscar()">Buscar</button>
+		<button class="actions__button-clear" mat-stroked-button color="primary" (click)="clickClear()">
+			Limpiar búsqueda
+		</button>
+	</section>
+
+	<section>
+		<h1>Creadores de contenido</h1>
+	</section>
+
+	<section class="content-creatores">
+		<app-card-home-creator-content
+			*ngFor="let item of listContentCreator"
+			[dataCard]="item"
+			(clickCard)="clickCard($event)"
+		></app-card-home-creator-content>
+	</section>
+</div>

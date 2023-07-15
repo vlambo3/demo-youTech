@@ -1,0 +1,19 @@
+<div class="container-principal">
+	<app-header></app-header>
+	<section class="banner-home" *ngIf="showBannerHome">
+		<h1 class="banner-home__message">Encuentra el contenido que necesitas e inspirate</h1>
+		<img class="banner-home__image" src="assets/images/banner-home.png" alt="banner" />
+	</section>
+
+	<main class="main-admin">
+		<router-outlet *ngIf="isAdmin; else basicContent"></router-outlet>
+	</main>
+
+	<ng-template #basicContent>
+		<main class="main">
+			<div class="main__content">
+				<router-outlet></router-outlet>
+			</div>
+		</main>
+	</ng-template>
+</div>

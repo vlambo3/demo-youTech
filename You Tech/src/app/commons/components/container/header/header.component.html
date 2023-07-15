@@ -1,0 +1,25 @@
+<header class="header">
+	<h1 class="header__title" routerLink="/">You<span>Tech</span></h1>
+
+	<section class="actions">
+		<ng-container *ngIf="isLoggedIn; else default">
+			<app-avatar [activeCursor]="true" [pathImage]="dataUser!.urlImage" [matMenuTriggerFor]="menuUser"></app-avatar>
+			<span class="actions__message">Hola {{ dataUser?.fullName }}</span>
+			<button mat-flat-button color="primary" (click)="clickCloseSession()">Cerrar sesión</button>
+
+			<mat-menu #menuUser="matMenu" class="shadow-login">
+				<button mat-menu-item routerLink="/">Principal</button>
+				<button mat-menu-item [routerLink]="dataUser!.isAdmin ? PATH_ADMIN : PATH_CONTENT_CREATOR">Mi sección</button>
+			</mat-menu>
+		</ng-container>
+
+		<ng-template #default>
+			<button mat-button color="primary" [routerLink]="PATH_REGISTER">Regístrate</button>
+			<button mat-flat-button color="primary" [matMenuTriggerFor]="menu">Iniciar sesión</button>
+
+			<mat-menu #menu="matMenu" class="shadow-login">
+				<app-login-flow></app-login-flow>
+			</mat-menu>
+		</ng-template>
+	</section>
+</header>

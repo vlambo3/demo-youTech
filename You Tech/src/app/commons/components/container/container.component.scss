@@ -1,0 +1,76 @@
+@use '../../../../assets/theme/colors.scss';
+.container-principal {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	.banner-home {
+		display: flex;
+		justify-content: center;
+		padding: 1em 0 1em 0;
+		align-items: center;
+		background-color: colors.$background-black-color;
+		padding-left: 12px;
+		padding-right: 12px;
+		&__message {
+			font-weight: bold;
+		}
+		&__image {
+			max-width: 24em;
+			width: 100%;
+		}
+	}
+
+	.main-admin {
+		flex: 1 1 auto;
+	}
+
+	.main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&__content {
+			max-width: 80%;
+			width: 100%;
+			padding: 1em;
+		}
+	}
+}
+
+@media (max-width: 1237px) {
+	.container-principal {
+		.banner-home {
+			&__image {
+				width: 180px;
+			}
+		}
+	}
+}
+
+@media (max-width: 931px) {
+	.container-principal {
+		.main {
+			&__content {
+				max-width: 100%;
+				width: 100%;
+				padding: 1em;
+			}
+		}
+	}
+}
+
+@media (max-width: 695px) {
+	.banner-home {
+		&__message {
+			font-size: 20px;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.banner-home {
+		flex-direction: column-reverse;
+		text-align: center;
+	}
+}

@@ -1,0 +1,76 @@
+<div class="movil-image" *ngIf="isSmallScreen">
+	<h1>Comparte tu contenido con los demás</h1>
+	<img src="assets/svg/register.svg" alt="registrate" />
+</div>
+<section class="container">
+	<mat-card class="content">
+		<form class="form" [formGroup]="formGroup" (ngSubmit)="clickRegister()" autocomplete="off">
+			<div class="container-photo">
+				<div
+					class="upload-photo"
+					[ngStyle]="{
+						'background-image': imageSrc ? 'url(' + imageSrc + ')' : ''
+					}"
+					mat-elevation-z4
+					matRipple
+					[matRippleCentered]="true"
+					[matRippleRadius]="75"
+					[matRippleUnbounded]="true"
+					(click)="fileInput.click()"
+				>
+					<input hidden (change)="onFileSelected($event)" #fileInput type="file" accept=".jpg,.jpeg,.png" />
+					<span class="material-icons" *ngIf="!imageSrc"> add_a_photo </span>
+				</div>
+				<mat-error *ngIf="!imageSrc"> Agregue una <strong>imagen</strong> </mat-error>
+			</div>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Nombres</mat-label>
+				<input matInput type="text" formControlName="name" />
+				<mat-icon matPrefix>account_circle</mat-icon>
+				<mat-error *ngIf="firtsField.hasError('required')"> Ingrese sus nombres </mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Apellidos</mat-label>
+				<input matInput type="text" formControlName="lastName" />
+				<mat-icon matPrefix>account_circle</mat-icon>
+				<mat-error *ngIf="lastNameField.hasError('required')"> Ingrese sus apellidos </mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>E-mail</mat-label>
+				<input matInput type="text" formControlName="email" />
+				<mat-icon matPrefix>password</mat-icon>
+				<mat-error *ngIf="emailField.hasError('required')">Ingrese su e-mail </mat-error>
+				<mat-error *ngIf="emailField.hasError('email')"> Ingrese un e-mail valido </mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Contraseña</mat-label>
+				<input matInput type="password" formControlName="password" />
+				<mat-icon matPrefix>password</mat-icon>
+				<mat-error *ngIf="passwordField.hasError('required')"> Ingrese una contraseña </mat-error>
+			</mat-form-field>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Repetir contraseña</mat-label>
+				<input matInput type="password" formControlName="confirmPassword" [errorStateMatcher]="passwordStateMatcher" />
+				<mat-icon matPrefix>password</mat-icon>
+
+				<mat-error *ngIf="confirmPasswordField.hasError('required')"> Ingrese una contraseña </mat-error>
+
+				<mat-error *ngIf="formGroup.hasError('crossConfirmPasswordError')">
+					La contraseña no coincide, verifique</mat-error
+				>
+			</mat-form-field>
+
+			<button mat-flat-button color="primary" type="submit" [disabled]="disabledButton">Guardar</button>
+		</form>
+
+		<section class="message" *ngIf="!isSmallScreen">
+			<h1 class="message__title">Comparte tu contenido con los demás</h1>
+			<img class="message__image" src="assets/svg/register.svg" alt="registrate" />
+		</section>
+	</mat-card>
+</section>

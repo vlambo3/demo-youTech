@@ -1,0 +1,38 @@
+@use '../../../../../assets/theme/colors.scss';
+
+::ng-deep .shadow-login {
+	background-color: colors.$background-card-color;
+	box-shadow: 0px 0px 10px rgba(0, 204, 203, 0.25);
+}
+
+.header {
+	padding: 2em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	&__title {
+		font-weight: bold;
+		cursor: pointer;
+		span {
+			color: colors.$primary-color;
+		}
+	}
+
+	.actions {
+		display: flex;
+		gap: 1em;
+		align-items: center;
+
+		&__message {
+			font-weight: bold;
+			color: colors.$primary-color;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.header {
+		flex-direction: column;
+		padding: 1em;
+	}
+}

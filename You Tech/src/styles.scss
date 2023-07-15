@@ -1,0 +1,92 @@
+@use '@angular/material' as mat;
+@use './assets/theme/dark-primary.scss' as theme;
+@use './assets/theme//colors.scss' as colors;
+@import 'node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme';
+
+@include mat.core();
+
+$ng-youtech-primary: mat.define-palette(theme.$dark-palette-primary);
+$ng-youtech-accent: mat.define-palette(theme.$dark-palette-accent);
+$ng-youtech-warn: mat.define-palette(mat.$pink-palette);
+
+$ng-youtech-theme: mat.define-dark-theme(
+	(
+		color: (
+			primary: $ng-youtech-primary,
+			accent: $ng-youtech-accent,
+			warn: $ng-youtech-warn
+		)
+	)
+);
+
+@include mat.all-component-themes($ng-youtech-theme);
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	background-color: colors.$background-color;
+	color: white;
+
+	*,
+	*:after,
+	*:before {
+		box-sizing: border-box;
+	}
+
+	//CLAS MODAL
+
+	.modal-principal {
+		.mat-dialog-container {
+			padding: 0 !important;
+		}
+	}
+
+	// ***************************************CAMBIO DE ESTILOS PARA LOS INPUTS Y LOS CHIPS***************************************
+	.mat-form-field-empty.mat-form-field-label {
+		color: colors.$primary-color;
+	}
+
+	.mat-form-field-appearance-outline {
+		.mat-form-field-outline {
+			background-color: colors.$background-black-color;
+			border-radius: 5px;
+		}
+	}
+
+	// CHIP
+	.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove {
+		opacity: 1;
+	}
+
+	.mat-form-field-subscript-wrapper {
+		font-size: inherit;
+	}
+	// ***************************************
+
+	// ***************************************CAMBIO DE ESTILOS PARA LOS BUTTONS**************************************
+
+	.mat-stroked-button:not(.mat-button-disabled) {
+		border-color: colors.$primary-color;
+		color: white;
+	}
+	.toast-wrapper.simple-toast .evolve-toast {
+		.toast-title-content {
+			color: black;
+			font-weight: 600;
+		}
+		.content-holder {
+			color: black;
+			font-weight: 600;
+			font-size: 16px;
+		}
+	}
+}
+
+.cdk-overlay-backdrop {
+	background: rgba(71, 71, 71, 0.34);
+	backdrop-filter: blur(2px);
+}

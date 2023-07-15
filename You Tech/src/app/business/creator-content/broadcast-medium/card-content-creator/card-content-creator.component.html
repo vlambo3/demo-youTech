@@ -1,0 +1,45 @@
+<mat-card class="container" *ngIf="broadCastMedium" [ngStyle]="{ width: isSmallScreen ? WidthCard : 'none' }">
+	<mat-card-content class="content">
+		<img class="content__image" [src]="broadCastMedium.urImage" />
+
+		<section class="information">
+			<section class="item">
+				<span class="item__title">Nombre</span>
+				<span class="item__description">{{ broadCastMedium.name }}</span>
+			</section>
+
+			<section class="item">
+				<span class="item__title">PLataforma</span>
+				<div class="platform" (click)="goToLink(broadCastMedium.urlPlatform)">
+					<img class="platform__image" src="{{ broadCastMedium.idPlatform | broadcastTypeImage }}" />
+					<span class="platform__description">{{ broadCastMedium.platform }}</span>
+				</div>
+			</section>
+
+			<section class="item">
+				<span class="item__title">Palabras clave (los 5 primeros)</span>
+				<cdk-virtual-scroll-viewport appendOnly itemSize="5" class="example-viewport">
+					<mat-chip-list>
+						<mat-chip *ngFor="let tag of broadCastMedium.tagList" color="primary" selected>{{
+							tag.description
+						}}</mat-chip>
+					</mat-chip-list>
+				</cdk-virtual-scroll-viewport>
+			</section>
+		</section>
+
+		<div class="actions">
+			<div class="circle">
+				<button mat-icon-button color="warn" (click)="clickDelete.emit(broadCastMedium)">
+					<mat-icon>delete_forever</mat-icon>
+				</button>
+			</div>
+
+			<div class="circle" (click)="clickEdit.emit(broadCastMedium)">
+				<button mat-icon-button color="primary">
+					<mat-icon>edit</mat-icon>
+				</button>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>

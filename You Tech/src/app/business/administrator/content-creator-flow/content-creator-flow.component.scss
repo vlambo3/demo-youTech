@@ -1,0 +1,26 @@
+.container {
+	width: 100%;
+}
+
+/* Structure */
+table {
+	width: 100%;
+}
+.mat-column-nro {
+	width: 100px;
+}
+
+.mat-column-avatar {
+	width: 250px;
+	.avatar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 7em;
+	}
+}
+
+.mat-form-field {
+	font-size: 14px;
+	width: 100%;
+}

@@ -1,0 +1,26 @@
+@use '../../../assets/theme/colors.scss';
+.container {
+	//   background-color: red;
+	height: 100%;
+	.menu {
+		background-color: colors.$background-black-color;
+		width: 17rem;
+	}
+
+	.selected {
+		color: colors.$primary-color;
+		font-weight: bold;
+	}
+
+	.content {
+		background-color: colors.$background-color;
+		display: flex;
+		justify-content: center;
+		.main {
+			padding-top: 8rem;
+			padding-bottom: 5rem;
+			max-width: 80%;
+			width: 100%;
+		}
+	}
+}

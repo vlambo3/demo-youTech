@@ -1,0 +1,62 @@
+@use '../../../../assets/theme/colors.scss';
+::ng-deep {
+	mat-tab-body {
+		height: calc(100% + 5%);
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+	.filters {
+		display: flex;
+		gap: 3em;
+
+		mat-form-field {
+			width: 100%;
+		}
+
+		mat-hint {
+			font-size: 16px;
+		}
+	}
+
+	.actions {
+		&__button-clear {
+			margin-left: 1em;
+		}
+	}
+
+	.content-creatores {
+		display: inline-flex;
+		gap: 1em;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 965px) {
+	.container {
+		.filters {
+			flex-direction: column;
+			gap: 5px;
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	h1 {
+		font-size: 18px;
+	}
+	.container {
+		.filters {
+			flex-direction: column;
+
+			mat-hint {
+				font-size: 14px;
+			}
+		}
+	}
+}

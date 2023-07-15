@@ -1,0 +1,75 @@
+@use '../../../../assets/theme/colors.scss';
+.main {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	width: 700px;
+	border-radius: 10px;
+	background-color: colors.$background-card-color;
+	gap: 3.5em;
+	padding: 2em;
+
+	@media (max-width: 808px) {
+		width: 100%;
+	}
+
+	.form {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		.column1,
+		.column2 {
+			display: flex;
+			flex-direction: column;
+			width: 47.5%;
+		}
+
+		@media (max-width: 808px) {
+			gap: 0em;
+			.column1,
+			.column2 {
+				width: 100%;
+				mat-form-field {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&-button {
+		text-align: end;
+	}
+
+	&-photo {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+
+		.upload-photo {
+			border-radius: 50%;
+			width: 122px;
+			height: 122px;
+			background-color: #6c6c6c;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			.material-icons {
+				color: colors.$accent-color;
+			}
+
+			object-fit: cover;
+			object-position: center center;
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	}
+}

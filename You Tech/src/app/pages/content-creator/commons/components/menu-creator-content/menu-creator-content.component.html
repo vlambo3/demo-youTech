@@ -1,0 +1,15 @@
+<div class="container">
+  <div
+    mat-elevation-z4
+    matRipple
+    [matRippleCentered]="true"
+    [matRippleRadius]="80"
+    [matRippleUnbounded]="true"
+    *ngFor="let menu of MENUS"
+    [ngClass]="{ menu: true, 'menu--selected': menuSelected === menu.path }"
+    [routerLink]="menu.path"
+  >
+    <img class="menu__image" [src]="menu.image" />
+    <span class="menu__title">{{ menu.title }} </span>
+  </div>
+</div>

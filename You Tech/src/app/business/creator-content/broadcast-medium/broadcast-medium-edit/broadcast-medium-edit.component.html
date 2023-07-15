@@ -1,0 +1,95 @@
+<div class="container">
+	<h1 *ngIf="broadCastMediumEdit">EDITAR DATOS DEL MEDIO DE DIFUSIÓN</h1>
+	<h1 *ngIf="!broadCastMediumEdit">REGISTRO DE NUEVO MEDIO DE DIFUSIÓN</h1>
+
+	<form class="form" [formGroup]="formGroup" (ngSubmit)="saveBroadCastingMedium()">
+		<div class="form-fields">
+			<section class="fields">
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre de tu canal, podtcast, etc</mat-label>
+					<input matInput type="text" formControlName="name" />
+					<mat-error *ngIf="nameField.hasError('required')"> El nombre es <strong>requerido</strong> </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Descripción</mat-label>
+					<textarea
+						matInput
+						rows="5"
+						cols="40"
+						formControlName="description"
+						placeholder="Ingrese una breve descripición"
+					></textarea>
+					<mat-error *ngIf="descriptionField.hasError('required')">
+						La descripición es <strong>requerida</strong>
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Enlace</mat-label>
+					<input matInput type="text" formControlName="url" />
+					<mat-error *ngIf="urlField.hasError('required')"> La Url es <strong>requerida</strong> </mat-error>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Plataforma</mat-label>
+					<mat-select formControlName="idBroadcastType" [errorStateMatcher]="matcher">
+						<mat-option [value]="item.idBroadCastType" *ngFor="let item of broadcastTypeList">{{
+							item.description
+						}}</mat-option>
+					</mat-select>
+					<mat-error *ngIf="idBroadcastTypeField.hasError('required')">
+						Seleccione una <strong>plataforma</strong>
+					</mat-error>
+				</mat-form-field>
+
+				<span class="fields__keys">Palabras claves</span>
+
+				<mat-form-field appearance="outline" *ngIf="allTags">
+					<!-- <mat-label>Favorite Fruits</mat-label> -->
+					<mat-chip-list #chipList>
+						<mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+							{{ tag.description }}
+							<button matChipRemove>
+								<mat-icon>cancel</mat-icon>
+							</button>
+						</mat-chip>
+
+						<input
+							placeholder="nueva palabra..."
+							#tagInput
+							formControlName="tagControl"
+							[matAutocomplete]="auto"
+							[matChipInputFor]="chipList"
+							[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+							[matChipInputAddOnBlur]="false"
+						/>
+					</mat-chip-list>
+					<mat-hint>Debe seleccionar al menos una palabra</mat-hint>
+					<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+						<mat-option *ngFor="let tag of filteredTags | async" [value]="tag.description">
+							{{ tag.description }}
+						</mat-option>
+					</mat-autocomplete>
+				</mat-form-field>
+			</section>
+
+			<section class="select-image">
+				<img class="select-image__image" *ngIf="imageSrc" [src]="imageSrc" />
+				<div class="select-image__imagediv" *ngIf="!imageSrc"></div>
+				<input hidden (change)="onFileSelected($event)" #fileInput type="file" accept=".jpg,.jpeg,.png" />
+
+				<mat-error *ngIf="!imageSrc"> Agregue una <strong>imagen</strong> </mat-error>
+
+				<button mat-mini-fab color="warn" (click)="fileInput.click()" type="button">
+					<mat-icon>photo_camera</mat-icon>
+				</button>
+			</section>
+		</div>
+
+		<section class="actions">
+			<button mat-stroked-button color="primary" mat-dialog-close type="button">Cancelar</button>
+			<button mat-flat-button color="primary" type="submit">Guardar</button>
+		</section>
+	</form>
+</div>

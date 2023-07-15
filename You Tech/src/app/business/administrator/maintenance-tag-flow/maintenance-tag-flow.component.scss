@@ -1,0 +1,44 @@
+.form {
+	display: flex;
+	flex-direction: column;
+
+	.checkbox {
+		font-weight: 500;
+		font-size: 16px;
+	}
+
+	.actions {
+		padding-top: 3rem;
+		&__clear {
+			margin-left: 10px;
+		}
+	}
+}
+
+table {
+	width: 100%;
+}
+
+.mat-row:hover {
+	background-color: rgba(128, 128, 128, 0.438);
+}
+
+.mat-form-field {
+	font-size: 14px;
+	width: 100%;
+}
+
+.active,
+.inactive {
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: 500;
+}
+.active {
+	background-color: #52be80;
+	border: 1.5px solid #1e8449;
+}
+.inactive {
+	background-color: #ec7063;
+	border: 1px solid #cb4335;
+}

@@ -1,0 +1,51 @@
+@use '../../../../../assets/theme/colors.scss';
+.container {
+	text-align: center;
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		.form-fields {
+			display: flex;
+			gap: 3rem;
+
+			.fields {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+
+				&__keys {
+					text-align: start;
+					font-size: 16px;
+					color: colors.$accent-color;
+					font-weight: 500;
+				}
+			}
+
+			.select-image {
+				&__image,
+				&__imagediv {
+					width: 18em;
+					height: 20em;
+				}
+
+				&__image {
+					object-fit: cover;
+					object-position: center;
+				}
+
+				&__imagediv {
+					background-color: colors.$background-black-color;
+				}
+			}
+		}
+
+		.actions {
+			display: flex;
+			gap: 3em;
+			justify-content: center;
+		}
+	}
+}
